@@ -280,6 +280,38 @@
         <p>Copyright &copy; <i id="dt"></i>. Qasim Sarwari, All Rights Reserved.</p>
     </footer>
     <!-- script files -->
+    <script>
+        var form = document.querySelector(".form");
+    
+    async function handleSubmit(event) {
+      event.preventDefault();
+     // var status = document.getElementById("my-form-status");
+      var data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          alert("Thanks for your submission!)";
+          form.reset()
+        } else {
+          response.json().then(data => {
+            if (Object.hasOwn(data, 'errors')) {
+              alert(data["errors"].map(error => error["message"]).join(", "))
+            } else {
+              alert("Oops! There was a problem submitting your form")
+            }
+          })
+        }
+      }).catch(error => {
+        alert("Oops! There was a problem submitting your form")
+      });
+    }
+    form.addEventListener("submit", handleSubmit)
+</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="dist/js/jquery.fancybox.min.js"></script>
     <script src="dist/js/scrollreveal.min.js"></script>
