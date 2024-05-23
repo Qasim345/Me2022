@@ -1,0 +1,16 @@
+{
+    "name": "Qasim Sarwari",
+    "short_name": "Qasim",
+    "start_url": ".",
+    "backgroud_color": "#fff",
+    "theme_color": "#6244C5",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "img/logo.png",
+            "size": "343/343",
+            "type": "image/png"
+        }
+    ]
+}
